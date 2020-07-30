@@ -1,0 +1,16 @@
+{
+    "customers": [
+        {
+            "id":"123456",
+            "dni": "12345678X",
+            "name": "Pablo Palacios",
+            "age": "41"
+        },
+        {
+            "id":"789456",
+            "dni": "22345678X",
+            "name": "Jaime Rosales",
+            "age": "35"
+        }
+    ]
+}
