@@ -3,11 +3,12 @@ import './App.css';
 import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomeContainer from './containers/HomeContainer';
 import CustomersContainer from './containers/CustomersContainer';
+import { CustomerContainer } from './containers/CustomerContainer';
 
 class App extends Component {
 
   renderHome = () => <HomeContainer></HomeContainer>
-  renderCustomerContainer = () => <h1>CustomerContainer</h1>
+  renderCustomerContainer = (dni) => <CustomerContainer></CustomerContainer>
   renderCustomerListContainer = () => <CustomersContainer></CustomersContainer>
   renderCustomerNewContainer = () => <h1>CustomerNewContainer</h1>
 
@@ -29,9 +30,7 @@ class App extends Component {
             <Route path="/customers/new">
               {this.renderCustomerNewContainer()}
             </Route>
-            <Route path="/customers/:dni">
-              {this.renderCustomerContainer()}
-            </Route>
+            <Route path="/customers/:dni" render={ (props) => <CustomerContainer dni={props.match.params.dni}></CustomerContainer>}></Route>
           </Switch>
 
         </div>
