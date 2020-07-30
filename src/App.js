@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import HomeContainer from './containers/HomeContainer';
+import CustomersContainer from './containers/CustomersContainer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  renderHome = () => <HomeContainer></HomeContainer>
+  renderCustomerContainer = () => <h1>CustomerContainer</h1>
+  renderCustomerListContainer = () => <CustomersContainer></CustomersContainer>
+  renderCustomerNewContainer = () => <h1>CustomerNewContainer</h1>
+
+  render= () => {
+    return (
+      <Router>
+        <div className="App">
+          <Route exact path="/">
+            {this.renderHome()}
+          </Route>
+          <Route exact path="/customers">
+            {this.renderCustomerListContainer()}
+          </Route>
+          {/* 
+            Con switch va validando cada ruta en el orden puesto, si matchea la url ya no mira la siguiente.
+            Sin switch, si matchera la url, mostraría el componente.. pudiendo mostrarse más de uno al mismo tiempo.
+           */}
+          <Switch>
+            <Route path="/customers/new">
+              {this.renderCustomerNewContainer()}
+            </Route>
+            <Route path="/customers/:dni">
+              {this.renderCustomerContainer()}
+            </Route>
+          </Switch>
+
+        </div>
+      </Router>
+    );
+  }
+
 }
 
 export default App;
