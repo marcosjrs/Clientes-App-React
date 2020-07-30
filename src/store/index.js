@@ -1,8 +1,5 @@
 import {createStore, compose} from 'redux';
-//Por ahora hacemos unos reducers dummy.. 
-const reducers = (state, accion) =>{
-    return state;
-}
+import  reducers from '../reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
