@@ -6,6 +6,7 @@ import CustomersAction from '../components/CustomersAction';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchCustomers } from '../actions/fetchCustomers';
+import { getCustomers } from '../selectors/customers';
 
 
 
@@ -51,10 +52,7 @@ CustomersContainer.propTypes = {
 };
 
 CustomersContainer.defaultProps = {
-    customers: [
-        {"dni":"12345678X", "name":"Pablo Palacios", "age":"41"},
-        {"dni":"22345678X", "name":"Jaime Rosales", "age":"35"},
-    ]
+    customers: [ ]
 };
 
 const mapDispatchToProps = {
@@ -63,7 +61,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => ({
     //Pendiente de hacer algo como....
-    //customers: getCustomers(state)
+    customers: getCustomers(state)
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CustomersContainer));
