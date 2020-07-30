@@ -54,9 +54,9 @@ CustomersContainer.propTypes = {
     fetchCustomers: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    fetchCustomers: () => dispatch(fetchCustomers("asdfasd"))
-})
+const mapDispatchToProps = {
+    fetchCustomers
+}
 
 const mapStateToProps = state => ({
     //Pendiente de hacer algo como....
