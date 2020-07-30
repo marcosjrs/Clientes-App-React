@@ -10,11 +10,6 @@ import { fetchCustomers } from '../actions/fetchCustomers';
 
 
 export class CustomersContainer extends Component {
-    customers = [
-        {"dni":"12345678X", "name":"Pablo Palacios", "age":"41"},
-        {"dni":"22345678X", "name":"Jaime Rosales", "age":"35"},
-    ];
-
     componentDidMount() {
         this.props.fetchCustomers();
     }
@@ -27,7 +22,7 @@ export class CustomersContainer extends Component {
     renderBody = (customers) => (
         <div>
             <CustomerList
-                customers={this.customers}
+                customers={customers}
                 urlPath={'customers/'}>
             </CustomerList>
             
@@ -42,7 +37,7 @@ export class CustomersContainer extends Component {
             <div>
                 <AppFrame
                 header={"Listado de clientes"}
-                body={this.renderBody()}
+                body={this.renderBody(this.props.customers)}
                 footer="Footer"
                 ></AppFrame>
             </div>
@@ -52,6 +47,14 @@ export class CustomersContainer extends Component {
 
 CustomersContainer.propTypes = {
     fetchCustomers: PropTypes.func.isRequired,
+    customers: PropTypes.array.isRequired
+};
+
+CustomersContainer.defaultProps = {
+    customers: [
+        {"dni":"12345678X", "name":"Pablo Palacios", "age":"41"},
+        {"dni":"22345678X", "name":"Jaime Rosales", "age":"35"},
+    ]
 };
 
 const mapDispatchToProps = {
