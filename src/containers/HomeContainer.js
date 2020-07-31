@@ -24,7 +24,7 @@ export class HomeContainer extends Component {
                             </CustomersAction>
                         </div>
                     }
-                    footer="Footer"
+                    footer=" "
                 ></AppFrame>
             </div>
         )

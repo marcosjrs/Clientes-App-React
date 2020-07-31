@@ -39,7 +39,7 @@ export class CustomersContainer extends Component {
                 <AppFrame
                 header={"Listado de clientes"}
                 body={this.renderBody(this.props.customers)}
-                footer="Footer"
+                footer=" "
                 ></AppFrame>
             </div>
         )

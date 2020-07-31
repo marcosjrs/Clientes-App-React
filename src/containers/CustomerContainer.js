@@ -42,7 +42,7 @@ export class CustomerContainer extends Component {
                             {this.props.customer && this.renderBody()}
                         </div>
                     }
-                    footer='Footer'
+                    footer=' '
                 ></AppFrame>
             </div>
         )
