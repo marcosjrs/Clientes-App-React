@@ -3,7 +3,7 @@ import './App.css';
 import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomeContainer from './containers/HomeContainer';
 import CustomersContainer from './containers/CustomersContainer';
-import { CustomerContainer } from './containers/CustomerContainer';
+import CustomerContainer from './containers/CustomerContainer';
 
 class App extends Component {
 
