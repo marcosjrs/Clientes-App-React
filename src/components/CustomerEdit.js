@@ -22,6 +22,9 @@ const validarFormularioCustomerEdit = campos =>{
     return errores;
 }
 
+const toNumber = (sNumero) => sNumero && Number(sNumero);
+const toUpper = (cadena) => cadena && cadena.toUpperCase();
+
 const InputConSpanAviso = ({input,meta, type, label, name}) =>{
     //podemo poner atributos a mayores en el Field, que luego se recogerían como propiedades, por ejemplo "label" es uno de ellos
     return(
@@ -43,10 +46,10 @@ const CustomerEdit = ({handleSubmit, submitting, onBack}) => {
             {/* onSubmit es de react-form y handleSubmit es la funcion pasada, que se usará para "burbujear",... pero que es el correspondiente al atributo onSubmit pasado (ver en CustomerContainer.js )*/}
             <form onSubmit={handleSubmit}>
                 {/*<Field name="name" component="input" validate={validarRequerido}  type="text"></Field>*/}
-                <Field name="name" component={InputConSpanAviso} type="text" label="Nombre"></Field>
+                <Field name="name" component={InputConSpanAviso} type="text" label="Nombre" parse={toUpper}></Field>
                 <Field name="dni" component={InputConSpanAviso} type="text" label="DNI"></Field>
                 {/*las validaciones primero comprobará las del field y luego, si no tiene errores, comprubeba las del formulario */}
-                <Field name="age" component={InputConSpanAviso} validate={[validarNumerico, validarRequerido]} type="number" label="Edad"></Field>
+                <Field name="age" component={InputConSpanAviso} validate={[validarNumerico, validarRequerido]} type="number" label="Edad" parse={toNumber}></Field>
 
                 <CustomersAction>
                     <button type="submit" disabled={submitting} >Aceptar</button>
