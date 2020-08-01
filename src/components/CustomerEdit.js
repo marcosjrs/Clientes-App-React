@@ -1,6 +1,7 @@
 import React from 'react'
 import { reduxForm, Field } from 'redux-form' //reduxForm es la funcion decoradora para este compo. Field es el que disparará las acciones..
 import CustomersAction from './CustomersAction';
+import { Prompt } from 'react-router-dom';
 
 const validarRequerido = (valorInput) =>{
     return !valorInput ? "El campo es requerido" : null; // o abreviando: !valorInput && "Campo obligatorio"
@@ -39,7 +40,7 @@ const InputConSpanAviso = ({input,meta, type, label, name}) =>{
 /**
  * Pendiente de modificar, por ahora es para continuar con el desarrollo...
  */
-const CustomerEdit = ({handleSubmit, submitting, onBack}) => {
+const CustomerEdit = ({handleSubmit, submitting, onBack, pristine ,submitSucceeded}) => {
     return (
         <div className="customer-data">
             <h2>Edición de información del cliente</h2>
@@ -53,8 +54,10 @@ const CustomerEdit = ({handleSubmit, submitting, onBack}) => {
 
                 <CustomersAction>
                     <button type="submit" disabled={submitting} >Aceptar</button>
-                    <button onClick={onBack} disabled={submitting} >Volver</button>
+                    <button type="button" onClick={onBack} disabled={submitting} >Volver</button>
                 </CustomersAction>
+                
+                <Prompt when={!pristine && !submitSucceeded} message="Se perderán los datos si continúa" ></Prompt>
 
             </form>
         </div>
