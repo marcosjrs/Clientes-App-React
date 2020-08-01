@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import AppFrame from '../components/AppFrame'
 import { getCustomerByDni } from '../selectors/customers'
 import { fetchCustomers } from './../actions/fetchCustomers';
+import { updateCustomer } from './../actions/updateCustomer';
 import { withRouter, Route } from 'react-router-dom'
 import CustomerEdit from "../components/CustomerEdit";
 import CustomerData from "../components/CustomerData";
@@ -16,9 +17,9 @@ export class CustomerContainer extends Component {
         }
     }
 
-    handleSubmit = campos => {
-        console.log(JSON.stringify(campos))
-        return false;
+    handleSubmit = valoresCampos => {
+        const {id} = valoresCampos;
+        this.props.updateCustomer(id, valoresCampos);
     }
     
     handleOnBack = () =>{
@@ -64,6 +65,8 @@ export class CustomerContainer extends Component {
 CustomerContainer.propTypes = {
     dni: PropTypes.string.isRequired,
     customer: PropTypes.object,
+    fetchCustomers:PropTypes.func.isRequired,
+    updateCustomer:PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state, props) => ({
@@ -71,5 +74,6 @@ const mapStateToProps = (state, props) => ({
 });
 
 export default withRouter(connect(mapStateToProps, {
-    fetchCustomers
+    fetchCustomers,
+    updateCustomer
 })(CustomerContainer));
