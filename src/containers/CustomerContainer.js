@@ -8,6 +8,7 @@ import { updateCustomer } from './../actions/updateCustomer';
 import { withRouter, Route } from 'react-router-dom'
 import CustomerEdit from "../components/CustomerEdit";
 import CustomerData from "../components/CustomerData";
+import { SubmissionError } from 'redux-form'
 
 export class CustomerContainer extends Component {
 
@@ -19,7 +20,12 @@ export class CustomerContainer extends Component {
 
     handleSubmit = valoresCampos => {
         const {id} = valoresCampos;
-        return this.props.updateCustomer(id, valoresCampos); //el return es para que desactive el boton (gracias a submitting) mientras se hace peticion
+        return this.props.updateCustomer(id, valoresCampos)
+            .then( r => {
+                if(r.error){
+                    throw new SubmissionError(r.payload); // con esto metería como texto del error, el texto pasado desde el server y que se mete en el payload, del update_customer disparado internamente por redux-form
+                }
+            } ); //el return es para que desactive el boton (gracias a submitting) mientras se hace peticion
     }
     
     handleOnBack = () =>{
