@@ -19,7 +19,7 @@ export class CustomerContainer extends Component {
 
     handleSubmit = valoresCampos => {
         const {id} = valoresCampos;
-        this.props.updateCustomer(id, valoresCampos);
+        return this.props.updateCustomer(id, valoresCampos); //el return es para que desactive el boton (gracias a submitting) mientras se hace peticion
     }
     
     handleOnBack = () =>{
