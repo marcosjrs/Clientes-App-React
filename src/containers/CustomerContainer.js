@@ -16,15 +16,27 @@ export class CustomerContainer extends Component {
         }
     }
 
+    handleSubmit = campos => {
+        console.log(JSON.stringify(campos))
+        return false;
+    }
+    
+    handleOnBack = () =>{
+        this.props.history.goBack();
+    }
+
     renderBody = () => {
+        console.log("RenderBody...")
         return (
-            <Route path="/customers/:id/edit" render={
-                ({match}) => match ?
-                    <CustomerEdit {...this.props.customer} /> :
-                    <CustomerData {...this.props.customer} />
-            }>
-            </Route>
+            <Route path="/customers/:id/edit" children={
+                ( { match } )  => {
+                    return match ?
+                    <CustomerEdit initialValues={this.props.customer} onSubmit={this.handleSubmit} onBack={this.handleOnBack} /> :
+                    <CustomerData {...this.props.customer} onBack={this.handleOnBack} /> 
+                }
+            }/>
         ); 
+        //Con initialValues, el redux-form coge directamente los valores de las propiedades que coincidan con el name de los "Field"
         //Con <xyz {...this.props.customer} />   destructuramos los datos del costumer y se lo pasamos como parametros. 
         //Sería como hacerage={this.props.customer.age}, y así con cada propiedad
         //Tambien se podría recoger el controlARenderizar según match y luego poner las props solo a ese:
