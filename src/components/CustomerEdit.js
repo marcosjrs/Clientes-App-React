@@ -53,7 +53,7 @@ const CustomerEdit = ({handleSubmit, submitting, onBack, pristine ,submitSucceed
                 <Field name="age" component={InputConSpanAviso} validate={[validarNumerico, validarRequerido]} type="number" label="Edad" parse={toNumber}></Field>
 
                 <CustomersAction>
-                    <button type="submit" disabled={submitting} >Aceptar</button>
+                    <button type="submit" disabled={pristine || submitting} >Aceptar</button>
                     <button type="button" onClick={onBack} disabled={submitting} >Volver</button>
                 </CustomersAction>
                 
