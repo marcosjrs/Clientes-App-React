@@ -5,6 +5,7 @@ import AppFrame from '../components/AppFrame'
 import { getCustomerByDni } from '../selectors/customers'
 import { fetchCustomers } from './../actions/fetchCustomers';
 import { updateCustomer } from './../actions/updateCustomer';
+import { deleteCustomer } from './../actions/deleteCustomer';
 import { withRouter, Route } from 'react-router-dom'
 import CustomerEdit from "../components/CustomerEdit";
 import CustomerData from "../components/CustomerData";
@@ -36,15 +37,24 @@ export class CustomerContainer extends Component {
         this.props.history.goBack();
     }
 
+    handleOnDelete = id => {
+        this.props.deleteCustomer(id).then(v => {
+            this.props.history.goBack();
+        });
+    }
+
     renderBody = () => {
-        console.log("RenderBody...")
+
         return (
             <Route path="/customers/:id/edit" children={
-                ( { match } )  => {
-                    return match ?
-                    <CustomerEdit initialValues={this.props.customer} onSubmit={this.handleSubmit} onSubmitSuccess={this.handleOnSubmitSuccess} onBack={this.handleOnBack} /> :
-                    <CustomerData {...this.props.customer} onBack={this.handleOnBack} /> 
-                }
+                ( { match: isEdit } ) => (
+                    <Route path="/customers/:dni/del" children={
+                        ( { match: isDelete } ) => (
+                            isEdit ?
+                            <CustomerEdit initialValues={this.props.customer} onSubmit={this.handleSubmit} onSubmitSuccess={this.handleOnSubmitSuccess} onBack={this.handleOnBack} /> :
+                            <CustomerData {...this.props.customer} onBack={this.handleOnBack} isDeleteAllow={isDelete} onDelete={this.handleOnDelete}/> 
+                        )
+                } /> )
             }/>
         ); 
         //Con initialValues, el redux-form coge directamente los valores de las propiedades que coincidan con el name de los "Field"
@@ -85,5 +95,6 @@ const mapStateToProps = (state, props) => ({
 
 export default withRouter(connect(mapStateToProps, {
     fetchCustomers,
-    updateCustomer
+    updateCustomer,
+    deleteCustomer
 })(CustomerContainer));
