@@ -4,13 +4,14 @@ import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomeContainer from './containers/HomeContainer';
 import CustomersContainer from './containers/CustomersContainer';
 import CustomerContainer from './containers/CustomerContainer';
+import NewCostumerContainer from './containers/NewCostumerContainer';
 
 class App extends Component {
 
   renderHome = () => <HomeContainer></HomeContainer>
   renderCustomerContainer = (dni) => <CustomerContainer></CustomerContainer>
   renderCustomerListContainer = () => <CustomersContainer></CustomersContainer>
-  renderCustomerNewContainer = () => <h1>CustomerNewContainer</h1>
+  renderCustomerNewContainer = () => <NewCostumerContainer></NewCostumerContainer>
 
   render= () => {
     return (

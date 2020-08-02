@@ -11,6 +11,12 @@
       "dni": "22345678X",
       "name": "Jaime Rosales",
       "age": 35
+    },
+    {
+      "name": "MIRIAM VIGO",
+      "dni": "87654321A",
+      "age": 35,
+      "id": "sANeMeE"
     }
   ]
 }
