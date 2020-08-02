@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import AppFrame from '../components/AppFrame'
 import CustomersAction from '../components/CustomersAction'
 import { withRouter } from 'react-router-dom'

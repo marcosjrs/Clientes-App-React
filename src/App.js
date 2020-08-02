@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomeContainer from './containers/HomeContainer';
 import CustomersContainer from './containers/CustomersContainer';
 import CustomerContainer from './containers/CustomerContainer';
