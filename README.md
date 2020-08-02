@@ -1,7 +1,7 @@
-Este proyecto de prueba  usa redux, react-router-dom, redux-actions, redux-form y redux-promise, ha sido creado con [Create React App](https://github.com/facebook/create-react-app). Es un proyecto sin ningún diseño, ya que la finalidad era probar lo mencionado.
+Este proyecto de prueba  usa redux, react-router-dom, redux-actions, redux-form y redux-promise, ha sido creado con [Create React App](https://github.com/facebook/create-react-app). Es un proyecto sin ningún diseño, ya que la finalidad era probar lo mencionado. Y en gran parte se creó siguiendo el curso de "React JS + Redux + ES6 ..."
 
 
-Además usa json-server como servidor de prueba, gracias al que recuperamos/creamos/actualizamos/borramos los datos, para levantarlo:
+Además usa json-server como servidor de prueba, gracias al que recuperamos/creamos/actualizamos/borramos los datos, para levantarlo ( ya que sino no se verá nada al arrancar el proyecto), podemos hacer:
 
 ```json-server --watch db.json --port 3001```
 
